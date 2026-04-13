@@ -136,25 +136,22 @@ https://localhost:xxxx
 
 <img width="1918" height="670" alt="image" src="https://github.com/user-attachments/assets/c14953d2-1bd6-4dcf-941c-c91eac8c4dd5" />
 
-```
----
-
 ---
 
 ## 🎯 Objetivo do projeto
 
 Este projeto foi desenvolvido com o objetivo de:
 
-* Aplicar conceitos de álgebra linear na prática
-* Entender fundamentos de criptografia
-* Desenvolver uma aplicação web com ASP.NET Core MVC
+- Aplicar conceitos de álgebra linear na prática  
+- Entender fundamentos de criptografia  
+- Desenvolver uma aplicação web com ASP.NET Core MVC  
 
 ---
 
 ## 📌 Observações
 
-* O projeto é educacional e não deve ser usado como método real de segurança
-* A implementação é inspirada no Hill Cipher, adaptado para ASCII (mod 256)
+- O projeto é educacional e não deve ser usado como método real de segurança  
+- A implementação é inspirada no Hill Cipher, adaptado para ASCII (mod 256)  
 
 ---
 
