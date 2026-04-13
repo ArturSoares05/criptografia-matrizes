@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Criptografia";
+}
+
+<div style="max-width:600px; margin:auto; text-align:center;">
+    <h2>Criptografia com Matrizes</h2>
+
+    <form method="post">
+        <textarea name="texto" rows="4" style="width:100%;">@ViewBag.Texto</textarea>
+
+        <br /><br />
+
+        <button formaction="/Home/Criptografar" class="btn btn-primary">
+            Criptografar
+        </button>
+
+        <button formaction="/Home/Descriptografar" class="btn btn-secondary">
+            Descriptografar
+        </button>
+    </form>
+
+    <br />
+
+    @if (ViewBag.Resultado != null)
+    {
+        <div style="margin-top:20px;">
+            <strong>Resultado:</strong>
+            <p style="word-break: break-all;">@ViewBag.Resultado</p>
+        </div>
+    }
+</div>
