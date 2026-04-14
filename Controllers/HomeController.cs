@@ -6,24 +6,25 @@ namespace Criptografia.Controllers
     public class HomeController : Controller
     {
         private static readonly int[,] chave =
-{
-    { 1, 2, 3 },
-    { 0, 1, 4 },
-    { 0, 0, 1 }
-};
+        {
+            { 1, 2, 3 },
+            { 0, 1, 4 },
+            { 0, 0, 1 }
+        };
 
         private static readonly int[,] chaveInversa =
         {
-    { 1, 254, 5 },
-    { 0, 1, 252 },
-    { 0, 0, 1 }
-};
+            { 1, 254, 5 },
+            { 0, 1, 252 },
+            { 0, 0, 1 }
+        };
 
         public IActionResult Index()
         {
             return View();
         }
 
+        // Processa o texto utilizando a matriz da chave retorna para a view
         [HttpPost]
         public IActionResult Criptografar(string texto)
         {
@@ -33,6 +34,7 @@ namespace Criptografia.Controllers
             return View("Index");
         }
 
+        // Processa o texto utilizando a matriz inversa da chave  retorna para a view
         [HttpPost]
         public IActionResult Descriptografar(string texto)
         {
@@ -42,7 +44,7 @@ namespace Criptografia.Controllers
             return View("Index");
         }
 
-        // ===== PIPELINE =====
+        // Transforma matriz em texto → Multiplica → Transforma texto em matriz
 
         static string ProcessarTexto(string texto, int[,] matriz)
         {
@@ -58,7 +60,7 @@ namespace Criptografia.Controllers
             return new string(resultado.ToArray());
         }
 
-        // ===== TEXTO → MATRIZ =====
+        // Divide o texto escrito pelo usuário em matrizes 3x3 e transforma nos valores ASCII
 
         static List<int[,]> TextoParaBlocos(string texto)
         {
@@ -81,7 +83,7 @@ namespace Criptografia.Controllers
             return lista;
         }
 
-        // ===== MATRIZ → TEXTO =====
+        // Trasnsforma as matrizes em texto
 
         static IEnumerable<char> MatrizParaTexto(int[,] m)
         {
@@ -90,7 +92,7 @@ namespace Criptografia.Controllers
                     yield return (char)m[i, j];
         }
 
-        // ===== MULTIPLICAÇÃO MOD 256 =====
+        //  Multiplicação utilizando Mod 256
 
         static int[,] MultiplicarMod256(int[,] a, int[,] b)
         {
@@ -107,7 +109,7 @@ namespace Criptografia.Controllers
                         soma += a[i, k] * b[k, j];
                     }
 
-                    r[i, j] = ((soma % 256) + 256) % 256;
+                    r[i, j] = ((soma % 256) + 256) % 256; // Garante que o valor da multiplicação esteja dentro de 0-255
                 }
             }
 
